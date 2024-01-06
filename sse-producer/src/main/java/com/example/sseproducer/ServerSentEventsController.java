@@ -19,7 +19,7 @@ public class ServerSentEventsController {
         new Thread(() -> {
             for (Employee employee: employees) {
                 try {
-                    emitter.send(SseEmitter.event().name("Employee: ").data(employee.toString()));
+                    emitter.send(SseEmitter.event().name("Employee: ").data(employee));
                     Thread.sleep(200);
                 } catch (IOException | InterruptedException e) {
                     emitter.completeWithError(e);
